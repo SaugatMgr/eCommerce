@@ -1,37 +1,42 @@
 # Django eCommerce Project
 
-This is a Django-based eCommerce project that allows users to like a product and admin to perform CRUD operation on product.
+This Django-based eCommerce project allows users to like products and administrators to manage products effortlessly.
 
 ## Features
 
-- User authentication: Allow users to create accounts, log in, and manage their profiles.
-- Product catalog: Display a list of products with details such as name, price, and description.
-- Admin panel: Provide an admin interface to manage products, and user accounts.
+- **User Authentication:** Users can create accounts, log in, and manage their profiles.
+- **Product Catalog:** Display a list of products with details such as name, price, and description.
+- **Admin Panel:** Provides an admin interface to manage products and user accounts.
+
+## Project Structure
+
+The main Django project is managed inside the `core/project_name` directory. The `manage.py` file also resides in the `core/` directory. To run commands, use `python -m core.manage <command_name>` or `make command_name` instead of `python manage.py <command_name>`. The `command_name` for make is inside `Makefile`. This structure is designed to organize project files effectively and improve maintainability.
+
+## Purpose of Using Makefile
+
+To streamline project development and management, a Makefile is included with custom command names. This simplifies executing commands related to Django management, such as running the development server, applying migrations, and installing dependencies.
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
     ```bash
-    git clone git@github.com:SaugatMgr/eCommerce.git
-    or
     git clone https://github.com/SaugatMgr/eCommerce.git
     ```
 
-2. Navigate to the project directory:
+2. **Navigate to the project directory:**
 
     ```bash
     cd the-project-directory
     ```
 
-3. Create a virtual environment:
-    Note: Since I have used poetry for dependency management it is important that we name our virtual env file .venv otherwise poetry will install packages in it's own venv which we don't want.
+3. **Create a virtual environment:**
 
     ```bash
     python -m venv .venv
     ```
 
-4. Activate the virtual environment:
+4. **Activate the virtual environment:**
 
     On Windows:
 
@@ -45,39 +50,51 @@ This is a Django-based eCommerce project that allows users to like a product and
     source .venv/bin/activate
     ```
 
-5. Install Poetry:
+5. **Install Poetry:**
 
     ```bash
     pip install poetry
     ```
 
-6. Install project dependencies:
+6. **Install project dependencies:**
 
     ```bash
     poetry install
     ```
 
-7. Set up environment variables:
+7. **Set up environment variables:**
 
-    Set up environment variables in a `.env` file. (like DEBUG, SECRET_KEY, DATABASE_URL, ALLOWED_HOSTS)
+    Create a `.env` file in the project root directory and add the following variables:
 
-8. Apply migrations:
+    ```
+    DEBUG=True
+    SECRET_KEY=your_secret_key_here
+    DATABASE_URL=your_database_url_here
+    ALLOWED_HOSTS=localhost,127.0.0.1
+    ```
+
+8. **Apply migrations:**
 
     ```bash
     python manage.py migrate
     ```
 
-9. Run the project:
+9. **Run the project:**
 
-    You might have to install make if it is not already installed in your system.
-    Go to website [https://gnuwin32.sourceforge.net/packages/make.htm](https://gnuwin32.sourceforge.net/packages/make.htm) for windows users and add it to environment variables.
-    For linux/ubuntu users: sudo apt install make
+    Ensure Makefile is installed:
+    - For Windows users, download and add Make to environment variables [here](https://gnuwin32.sourceforge.net/packages/make.htm).
+    - For Linux/Ubuntu users:
+
+    ```bash
+    sudo apt install make
+    ```
+
+    Now, run the project:
 
     ```bash
     make runserver
     ```
 
-10. Access the project:
+10. **Access the project:**
 
-    Open a web browser and navigate to [http://localhost:8000](http://localhost:8000) to access the project.
-
+    Open a web browser and go to [http://localhost:8000](http://localhost:8000) to view the project.
