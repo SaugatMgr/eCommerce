@@ -3,10 +3,7 @@ from django.views import View
 from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import (
-    LoginRequiredMixin,
-    UserPassesTestMixin,
-)
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from apps.product.forms import ProductForm
 
@@ -24,14 +21,16 @@ class HomePageView(TemplateView):
         return context
 
 
-class AddProductView(CreateView, LoginRequiredMixin):
+class AddProductView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = "main/home/product/add_product.html"
     success_url = reverse_lazy("home")
+    permission_required = "add_product"
+    permission_denied_message = "You do not have permission to add a product."
 
 
-class ProductDetailView(DetailView, LoginRequiredMixin):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = "main/home/product/product_detail.html"
 
@@ -39,20 +38,24 @@ class ProductDetailView(DetailView, LoginRequiredMixin):
         return Product.objects.filter(slug=self.kwargs["slug"])
 
 
-class UpdateProductView(UpdateView, LoginRequiredMixin):
+class UpdateProductView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = "main/home/product/update_product.html"
+    permission_required = "change_product"
+    permission_denied_message = "You do not have permission to update this product."
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
 
-class ProductDeleteView(DeleteView, LoginRequiredMixin):
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = "main/home/product/delete_product.html"
     success_url = reverse_lazy("home")
     context_object_name = "product"
+    permission_required = "delete_product"
+    permission_denied_message = "You do not have permission to delete this product."
 
 
 class LikeProductView(View, LoginRequiredMixin):
