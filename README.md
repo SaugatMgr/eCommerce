@@ -70,7 +70,7 @@ To streamline project development and management, a Makefile is included with cu
     DEBUG=True
     SECRET_KEY=your_secret_key_here
     DATABASE_URL=your_database_url_here
-    ALLOWED_HOSTS=localhost,127.0.0.1
+    ALLOWED_HOSTS="localhost,127.0.0.1" or "*"
     ```
 
 8. **Apply migrations:**
