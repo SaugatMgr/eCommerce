@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+{% load humanize %}
+{% block title %}{{ product.name }}{% endblock title %}
+{% block content %}
+    <div style="overflow: auto;">
+        <h1 style="float: left;">{{ product.name }}</h1>
+        {% if user.is_superuser %}
+            <div style="float: right;">
+                <a href="{% url "update-product" slug=product.slug %}" class="btn btn-primary">Update</a>
+
+                <a href="{% url "delete-product" slug=product.slug %}" class="btn btn-danger">Delete</a>
+            </div>
+        {% endif %}
+    </div>
+    <div style="clear: both;"></div>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width:100%;height:auto;">
+    <p>Price: Rs.{{ product.price|intcomma }}</p>
+    <p>Description: {{ product.description }}</p>
+    <p>Total Likes: {{ product.likes }}</p>
+{% endblock content %}
