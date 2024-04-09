@@ -1,5 +1,5 @@
 body {
-    background-color: #f5f3f9;
+    background-color: #ab87f3;
 }
 
 .navbar {
@@ -26,20 +26,19 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link {
-    color: #333; /* Text color */
-    text-decoration: none; /* Remove underline */
+    color: #333;
+    text-decoration: none;
     display: flex;
-    align-items: center; /* Align icon and text vertically */
-    margin-right: 10px; /* Add spacing between items */
-  }
-  
-  /* Icon Styles */
-  .navbar-nav .nav-item .nav-link .icon {
-    font-size: 20px; /* Adjust icon size */
-    margin-right: 5px; /* Add spacing between icon and text */
-  }
-  
-  /* Hover Effect */
-  .navbar-nav .nav-item .nav-link:hover {
-    color: #007bff; /* Blue color on hover */
-  }
+    align-items: center;
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-item .nav-link .icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* Hover Effect */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff;
+}
