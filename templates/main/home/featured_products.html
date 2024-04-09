@@ -13,11 +13,20 @@
         <div class="card-body">
           <h5 class="card-title">
             <a href="{% url 'product-detail' slug=product.slug %}"
-              >{{ product.name }}</a
+            >{{ product.name }}</a
             >
           </h5>
           <p class="card-text">Price: Rs.{{ product.price|intcomma }}</p>
-          <a href="#" class="like-btn"><i class="fas fa-thumbs-up"></i></a>
+          <form class="like-btn" method="post" action="{% url 'like-product' %}" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden"
+              name="product_slug"
+              value="{{ product.slug }}">
+            <button type="submit" style="border: none; background: none; color: inherit;">
+                <i class="fas fa-thumbs-up"></i>
+            </button>
+          </form>
+        
           <span class="likes-count">{{ product.likes }}</span>
         </div>
       </div>
