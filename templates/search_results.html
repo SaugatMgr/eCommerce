@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% load humanize %}
+{% block title %}
+    Search Results{% if query %} for "{{ query }}"{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Search Results{% if query %} for "{{ query }}"{% endif %}</h2>
+        {% if results %}
+            <div class="row">
+                {% for product in results %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <p class="card-text">Price: Rs.{{ product.price|intcomma }}</p>
+                                <a href="{% url 'product-detail' slug=product.slug %}" class="btn btn-primary">View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center">No results found.</p>
+        {% endif %}
+    </div>
+{% endblock %}
