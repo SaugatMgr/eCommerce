@@ -63,8 +63,6 @@ This is a Django-based eCommerce project that allows users to like a product and
 
 8. Apply migrations:
 
-    Apply migrations:
-
     ```bash
     python manage.py migrate
     ```
@@ -72,9 +70,9 @@ This is a Django-based eCommerce project that allows users to like a product and
 9. Run the project:
 
     You might have to install make if it is not already installed in your system.
-    Go to website [https://gnuwin32.sourceforge.net/packages/make.htm] for windows users and add it to environment variables.
+    Go to website [https://gnuwin32.sourceforge.net/packages/make.htm](https://gnuwin32.sourceforge.net/packages/make.htm) for windows users and add it to environment variables.
     For linux/ubuntu users: sudo apt install make
-    
+
     ```bash
     make runserver
     ```
