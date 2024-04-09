@@ -17,6 +17,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
+        <li class="nav-item">
+          <form class="d-flex nav-item" action="{% url 'search' %}" method="get">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </li>
         {% if user.is_authenticated %}
           <form action="{% url 'logout' %}" method="post" class="nav-item">
             {% csrf_token %}
