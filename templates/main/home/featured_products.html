@@ -3,21 +3,25 @@
   <h2 class="text-center mb-4">Featured Products</h2>
   <div class="row">
     {% for product in products %}
-      <div class="col-md-4">
-        <div class="card">
-          <img
-            src="{{ product.image.url }}"
-            class="card-img-top"
-            alt="{{ product.name }}"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">Price: Rs.{{ product.price|intcomma }}</p>
-            <a href="#" class="like-btn"><i class="fas fa-thumbs-up"></i></a>
-            <span class="likes-count">{{ product.likes }}</span>
-          </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img
+          src="{{ product.image.url }}"
+          class="card-img-top"
+          alt="{{ product.name }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'product-detail' slug=product.slug %}"
+              >{{ product.name }}</a
+            >
+          </h5>
+          <p class="card-text">Price: Rs.{{ product.price|intcomma }}</p>
+          <a href="#" class="like-btn"><i class="fas fa-thumbs-up"></i></a>
+          <span class="likes-count">{{ product.likes }}</span>
         </div>
       </div>
+    </div>
     {% endfor %}
   </div>
 </div>

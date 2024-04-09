@@ -24,9 +24,11 @@
               <i class="icon fas fa-sign-out-alt"></i> Logout
             </button>
           </form>
-          <a href="{% url 'add-product' %}" class="nav-link btn btn-success" style="color: white">
-            Add Product
-          </a>
+          {% if user.is_superuser %}
+            <a href="{% url 'add-product' %}" class="nav-link btn btn-success" style="color: white">
+              Add Product
+            </a>
+          {% endif %}
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">
