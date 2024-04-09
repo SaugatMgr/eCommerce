@@ -1,0 +1,26 @@
+body {
+    background-color: #7d52e4;
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.like-btn {
+    color: #ff3366;
+}
+
+.btn-like:hover {
+    color: #e6005c;
+}
+
+.likes-count {
+    color: #ff3366;
+    margin-left: 5px;
+}
